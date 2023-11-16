@@ -2,25 +2,51 @@ from django.http import HttpResponse
 from django.http.response import StreamingHttpResponse
 from django.shortcuts import render, redirect
 from .forms import AudioForm
-from app.split_audio import ___
 
+import pandas as pd
+import matplotlib.pyplot as plt
+# from app.diarizer import ___
 import numpy as np
-
+df = pd.DataFrame()
 # Create your views here.
-def index(request):
-    return render(request, "app/index.html")
 
-def upload_audio(request):
+# file_name = 'CustomerCare'
+
+def landing(request):
+    return render(request, "app/landing.html")
+
+
+def index(request):
     if request.method == 'POST':
         form = AudioForm(request.POST, request.FILES or None)
         if form.is_valid():
             form.save()
-            response = redirect('/')
+            response = redirect('/index')
             return response
     else:
         form = AudioForm()
-    return render(request, 'app/upload_audio.html', {'form': form})
+    return render(request, 'app/index.html', {'form': form})    
 
-def analysis(request):
 
-    return render(request, 'app/analysis.html')
+def audio_breakdown(request):
+    from .emotion_detection import create_data_frame
+    df = create_data_frame()
+    data_list = df.values.tolist()
+    print(data_list)
+    context = {'data_list': data_list}
+    return render(request, 'app/voice_breakdown.html', context)
+
+def detection(request):
+    from .emotion_detection import create_data_frame, output
+    df = create_data_frame()
+    outputs = output()
+    emotion = []
+    for i in range(len(outputs)):
+        max_emotion = max(outputs[i], key=lambda x: float(x['Score'].strip('%')))
+        emotion.append(max_emotion["Emotion"])
+
+    df["Emotion"] = emotion
+    data_list = df.values.tolist()
+    print(data_list)
+    context = {'data_list': data_list}
+    return render(request, 'app/detection.html', context)

@@ -1,2 +1,7 @@
 from huggingface_hub import login
-login(token="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")
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+login(token=os.environ.get('HUGGING_FACE_TOKEN'))
