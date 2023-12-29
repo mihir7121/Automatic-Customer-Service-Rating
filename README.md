@@ -8,14 +8,23 @@ Follow these steps to set up the Customer Audio Analysis Tool on your local mach
 
 ### Prerequisites
 Make sure you have the following installed: 
-1. Python 3.x
-2. Django (install using pip install Django)
+- Python 3.x
+- Django (install using pip install Django)
 
 ### Cloning and setup
-1. Clone the Repository - git clone https://github.com/your-username/Automatic-Customer-Service-Rating.git, cd Automatic-Customer-Service-Rating.
-2. Install Dependencies - pip install -r requirements.txt
-3. Database Setup - python manage.py migrate
-
+- Clone the Repository
+````
+git clone https://github.com/your-username/Automatic-Customer-Service-Rating.git
+cd Automatic-Customer-Service-Rating.
+````
+- Install Dependencies
+````
+pip install -r requirements.txt
+````
+- Database Setup
+````
+python manage.py migrate
+````
 ## Running the Application
 Once the installation is complete, start the development server:
 cd SpeakerDiarization
