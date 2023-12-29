@@ -15,7 +15,7 @@ Make sure you have the following installed:
 - Clone the Repository
 ````
 git clone https://github.com/your-username/Automatic-Customer-Service-Rating.git
-cd Automatic-Customer-Service-Rating.
+cd Automatic-Customer-Service-Rating
 ````
 - Install Dependencies
 ````
