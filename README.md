@@ -36,9 +36,6 @@ Visit http://localhost:8000/ or http://127.0.0.1:8000/ in your browser to access
 2. Upload the audio files for analysis.
 3. Explore the generated insights and reports.
 
-## Contributing
-We welcome contributions to enhance the functionality and features of the Customer Audio Analysis Tool. If you'd like to contribute, please follow our contribution guidelines.
-
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
